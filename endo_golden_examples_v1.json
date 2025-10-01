@@ -1,0 +1,132 @@
+[
+  {
+    "input": {
+      "Age": 24.0,
+      "Menstrual_Irregularity": 0.0,
+      "Chronic_Pain_Level": 7.801554552391303,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 1.0,
+      "BMI": 23.53702094671269
+    },
+    "pred_proba_high": 0.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 41.0,
+      "Menstrual_Irregularity": 1.0,
+      "Chronic_Pain_Level": 1.9640977363134968,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 22.91532579531884
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 26.0,
+      "Menstrual_Irregularity": 1.0,
+      "Chronic_Pain_Level": 7.985663782730315,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 22.966226205830157
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Age": 25.0,
+      "Menstrual_Irregularity": 0.0,
+      "Chronic_Pain_Level": 4.893575127454033,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 1.0,
+      "BMI": 21.02781125660621
+    },
+    "pred_proba_high": 0.0,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Age": 19.0,
+      "Menstrual_Irregularity": 0.0,
+      "Chronic_Pain_Level": 6.069407899272396,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 1.0,
+      "BMI": 25.6073895956734
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 42.0,
+      "Menstrual_Irregularity": 1.0,
+      "Chronic_Pain_Level": 5.589661378419389,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 1.0,
+      "BMI": 21.51548803761684
+    },
+    "pred_proba_high": 0.0,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Age": 46.0,
+      "Menstrual_Irregularity": 1.0,
+      "Chronic_Pain_Level": 5.220670866318752,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 26.44755070296489
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 37.0,
+      "Menstrual_Irregularity": 1.0,
+      "Chronic_Pain_Level": 4.855141860715434,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 27.04002721493625
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 49.0,
+      "Menstrual_Irregularity": 0.0,
+      "Chronic_Pain_Level": 3.9304554878843927,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 24.901250058040503
+    },
+    "pred_proba_high": 1.0,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Age": 24.0,
+      "Menstrual_Irregularity": 0.0,
+      "Chronic_Pain_Level": 3.38556864503112,
+      "Hormone_Level_Abnormality": 1.0,
+      "Infertility": 0.0,
+      "BMI": 21.07697725990527
+    },
+    "pred_proba_high": 0.0,
+    "label": 1,
+    "true": 0
+  }
+]
