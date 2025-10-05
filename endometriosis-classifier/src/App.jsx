@@ -1,24 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { loadModel, preprocessInput, predict } from "./decisionTree"; //functionsd from helper from json
 
 export default function App() {
   const [form, setForm] = useState({
-    age: "",
-    chronicPain: "",
-    bmi: "",
-    menstrual: "",
-    hormone: "",
-    infertility: "",
+    Age: "",                          
+    Chronic_Pain_Level: "",           
+    BMI: "",                          
+    Menstrual_Irregularity: "",       
+    Hormone_Level_Abnormality: "",   
+    Infertility: "",
   });
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [modelReady, setModelReady] = useState(false);
+  const [model, setModel] = useState(null);
+
+  //load model
+  useEffect(() => {
+    loadModel().then(m => {
+      setModel(m);
+      setModelReady(true);
+    }).catch(err => {
+      console.error("Failed to load model:", err);
+    });
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const risk = classifyEndometriosis(form);
-    setResult(risk);
+    if (!modelReady) return;
+    
+    setLoading(true);
+    
+    try {
+      console.log('📝 Form data:', form);
+      const features = preprocessInput(form, model.preprocConfig);
+      console.log('🔢 Preprocessed features:', features);
+      const prediction = predict(features, model.treeModel);
+      console.log('🎯 Prediction result:', prediction);
+      setResult(prediction);
+    } catch (err) {
+      console.error("Prediction error:", err);
+      alert("An error occurred during prediction: " + err.message);
+    }
+    
+    setLoading(false);
+  };
+
+  // Debug button handler
+  const debugModel = () => {
+    console.log('=== DEBUG INFO ===');
+    console.log('Model ready:', modelReady);
+    console.log('Preproc config:', model?.preprocConfig);
+    console.log('Tree model:', model?.treeModel);
+    console.log('Current form:', form);
   };
 
   return (
@@ -85,12 +123,12 @@ export default function App() {
 
         <form onSubmit={handleSubmit} className="bg-white shadow p-6 rounded-2xl w-full max-w-md mx-auto">
           {[
-            { name: "age", label: "Age", type: "number" },
-            { name: "chronicPain", label: "Chronic Pain Level (1-10)", type: "number" },
-            { name: "bmi", label: "BMI", type: "number" },
-            { name: "menstrual", label: "Menstrual Irregularity (0/1)", type: "number" },
-            { name: "hormone", label: "Hormone Abnormality (0/1)", type: "number" },
-            { name: "infertility", label: "Infertility (0/1)", type: "number" },
+            { name: "Age", label: "Age", type: "number" },
+            { name: "Chronic_Pain_Level", label: "Chronic Pain Level (1-10)", type: "number" },
+            { name: "BMI", label: "BMI", type: "number" },
+            { name: "Menstrual_Irregularity", label: "Menstrual Irregularity (0/1)", type: "number" },
+            { name: "Hormone_Level_Abnormality", label: "Hormone Abnormality (0/1)", type: "number" },
+            { name: "Infertility", label: "Infertility (0/1)", type: "number" },
           ].map((f) => (
             <div key={f.name} className="mb-4">
               <label className="block font-medium mb-1">{f.label}</label>
@@ -105,8 +143,12 @@ export default function App() {
             </div>
           ))}
 
-          <button className="bg-yellow-400 text-white px-4 py-2 rounded-md hover:bg-yellow-500">
-            Predict
+          <button 
+            type="submit"
+            disabled={loading || !modelReady}
+            className="bg-yellow-400 text-white px-4 py-2 rounded-md hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          >
+            {loading ? "Analyzing..." : "Predict"}
           </button>
         </form>
 
@@ -132,6 +174,7 @@ export default function App() {
   );
 }
 
+/*
 // === example of tree logic === still need to connect 
 function classifyEndometriosis({ age, chronicPain, bmi, menstrual, hormone, infertility }) {
   age = parseFloat(age);
@@ -151,4 +194,4 @@ function classifyEndometriosis({ age, chronicPain, bmi, menstrual, hormone, infe
     }
   }
   return { classification: "EPOSITIVE", probability: 80 };
-}
+}*/
