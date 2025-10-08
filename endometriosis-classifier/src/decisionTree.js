@@ -5,8 +5,8 @@ let preprocConfig = null;
 export async function loadModel() {
   if (!treeModel || !preprocConfig) {
     const [modelRes, preprocRes] = await Promise.all([
-      fetch('/endo_dt_model_v1.json'),
-      fetch('/endo_preproc_v1.json')
+      fetch('/thyroid_dt_model_v1.json'),  
+      fetch('/thyroid_preproc_v1.json')
     ]);
     
     treeModel = await modelRes.json();
@@ -20,13 +20,13 @@ export async function loadModel() {
 export function preprocessInput(formData, preprocConfig) {
   const features = [];
 
-    for (const col of preprocConfig.numeric) {
+  for (const col of preprocConfig.numeric) {
     const value = parseFloat(formData[col]) || preprocConfig.numeric_imputation[col];
     features.push(value);
   }
 
   //categorical data
-for (const col of preprocConfig.categorical) {
+  for (const col of preprocConfig.categorical) {
     const userValue = formData[col];
     const vocab = preprocConfig.categorical_vocabulary[col];
     
@@ -34,7 +34,8 @@ for (const col of preprocConfig.categorical) {
       features.push(userValue == category ? 1.0 : 0.0);
     }
   }
-    return features;
+  
+  return features;
 }
 
 export function predict(features, treeModel) {
@@ -56,15 +57,14 @@ export function predict(features, treeModel) {
   // Get probability from leaf node
   const leafValues = tree[nodeIdx].value;
   const total = leafValues[0] + leafValues[1];
-  const probPositive = leafValues[1] / total;
+  const probMalignant = leafValues[1] / total;
   
-  //const classification = probPositive > treeModel.threshold ? "POSITIVE" : "NEGATIVE";  //- our threshold from the notebook is 0 sooo
-  //smth might be worng with the tree
-  const classification = probPositive > 0.5 ? "POSITIVE" : "NEGATIVE";
+
+  const classification = probMalignant >= treeModel.threshold ? "MALIGNANT" : "BENIGN";
   
   return {
     classification,
-    probability: Math.round(probPositive * 100),
-    confidence: probPositive >= 0.7 ? "High Risk" : probPositive >= 0.4 ? "Moderate Risk" : "Low Risk"
+    probability: Math.round(probMalignant * 100),
+    confidence: probMalignant >= 0.7 ? "High Risk" : probMalignant >= 0.4 ? "Moderate Risk" : "Low Risk"
   };
 }
