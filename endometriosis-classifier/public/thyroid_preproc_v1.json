@@ -1,0 +1,267 @@
+{
+  "numeric": [
+    "Age",
+    "TSH_Level",
+    "T3_Level",
+    "T4_Level",
+    "Nodule_Size"
+  ],
+  "categorical": [
+    "Gender",
+    "Country",
+    "Ethnicity",
+    "Family_History",
+    "Radiation_Exposure",
+    "Iodine_Deficiency",
+    "Smoking",
+    "Obesity",
+    "Diabetes"
+  ],
+  "numeric_imputation": {
+    "Age": 52.0,
+    "TSH_Level": 5.045,
+    "T3_Level": 2.0,
+    "T4_Level": 8.24,
+    "Nodule_Size": 2.51
+  },
+  "numeric_ranges_train": {
+    "Age": {
+      "min": 15.0,
+      "max": 89.0
+    },
+    "TSH_Level": {
+      "min": 0.1,
+      "max": 10.0
+    },
+    "T3_Level": {
+      "min": 0.5,
+      "max": 3.5
+    },
+    "T4_Level": {
+      "min": 4.5,
+      "max": 12.0
+    },
+    "Nodule_Size": {
+      "min": 0.0,
+      "max": 5.0
+    }
+  },
+  "categorical_vocabulary": {
+    "Gender": [
+      "Female",
+      "Male"
+    ],
+    "Country": [
+      "Brazil",
+      "China",
+      "Germany",
+      "India",
+      "Japan",
+      "Nigeria",
+      "Russia",
+      "South Korea",
+      "UK",
+      "USA"
+    ],
+    "Ethnicity": [
+      "African",
+      "Asian",
+      "Caucasian",
+      "Hispanic",
+      "Middle Eastern"
+    ],
+    "Family_History": [
+      "No",
+      "Yes"
+    ],
+    "Radiation_Exposure": [
+      "No",
+      "Yes"
+    ],
+    "Iodine_Deficiency": [
+      "No",
+      "Yes"
+    ],
+    "Smoking": [
+      "No",
+      "Yes"
+    ],
+    "Obesity": [
+      "No",
+      "Yes"
+    ],
+    "Diabetes": [
+      "No",
+      "Yes"
+    ]
+  },
+  "final_feature_order": [
+    {
+      "source": "Age",
+      "kind": "numeric"
+    },
+    {
+      "source": "TSH_Level",
+      "kind": "numeric"
+    },
+    {
+      "source": "T3_Level",
+      "kind": "numeric"
+    },
+    {
+      "source": "T4_Level",
+      "kind": "numeric"
+    },
+    {
+      "source": "Nodule_Size",
+      "kind": "numeric"
+    },
+    {
+      "source": "Gender",
+      "kind": "onehot",
+      "category": "Female"
+    },
+    {
+      "source": "Gender",
+      "kind": "onehot",
+      "category": "Male"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "Brazil"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "China"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "Germany"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "India"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "Japan"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "Nigeria"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "Russia"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "South Korea"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "UK"
+    },
+    {
+      "source": "Country",
+      "kind": "onehot",
+      "category": "USA"
+    },
+    {
+      "source": "Ethnicity",
+      "kind": "onehot",
+      "category": "African"
+    },
+    {
+      "source": "Ethnicity",
+      "kind": "onehot",
+      "category": "Asian"
+    },
+    {
+      "source": "Ethnicity",
+      "kind": "onehot",
+      "category": "Caucasian"
+    },
+    {
+      "source": "Ethnicity",
+      "kind": "onehot",
+      "category": "Hispanic"
+    },
+    {
+      "source": "Ethnicity",
+      "kind": "onehot",
+      "category": "Middle Eastern"
+    },
+    {
+      "source": "Family_History",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Family_History",
+      "kind": "onehot",
+      "category": "Yes"
+    },
+    {
+      "source": "Radiation_Exposure",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Radiation_Exposure",
+      "kind": "onehot",
+      "category": "Yes"
+    },
+    {
+      "source": "Iodine_Deficiency",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Iodine_Deficiency",
+      "kind": "onehot",
+      "category": "Yes"
+    },
+    {
+      "source": "Smoking",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Smoking",
+      "kind": "onehot",
+      "category": "Yes"
+    },
+    {
+      "source": "Obesity",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Obesity",
+      "kind": "onehot",
+      "category": "Yes"
+    },
+    {
+      "source": "Diabetes",
+      "kind": "onehot",
+      "category": "No"
+    },
+    {
+      "source": "Diabetes",
+      "kind": "onehot",
+      "category": "Yes"
+    }
+  ],
+  "preproc_version": "v1",
+  "trained_on": "2025-10-08"
+}

@@ -3,12 +3,20 @@ import { loadModel, preprocessInput, predict } from "./decisionTree"; //function
 
 export default function App() {
   const [form, setForm] = useState({
-    Age: "",                          
-    Chronic_Pain_Level: "",           
-    BMI: "",                          
-    Menstrual_Irregularity: "",       
-    Hormone_Level_Abnormality: "",   
-    Infertility: "",
+    Age: "",
+    TSH_Level: "",
+    T3_Level: "",
+    T4_Level: "",
+    Nodule_Size: "",
+    Gender: "",
+    Country: "",
+    Ethnicity: "",
+    Family_History: "",
+    Radiation_Exposure: "",
+    Iodine_Deficiency: "",
+    Smoking: "",
+    Obesity: "",
+    Diabetes: "",
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -36,27 +44,20 @@ export default function App() {
     setLoading(true);
     
     try {
-      console.log('📝 Form data:', form);
+      // Preprocess the input
       const features = preprocessInput(form, model.preprocConfig);
-      console.log('🔢 Preprocessed features:', features);
+      
+      // Make prediction
       const prediction = predict(features, model.treeModel);
-      console.log('🎯 Prediction result:', prediction);
+      
+      // Set result
       setResult(prediction);
-    } catch (err) {
-      console.error("Prediction error:", err);
-      alert("An error occurred during prediction: " + err.message);
+    } catch (error) {
+      console.error("Prediction error:", error);
+      alert("An error occurred during prediction. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    
-    setLoading(false);
-  };
-
-  // Debug button handler
-  const debugModel = () => {
-    console.log('=== DEBUG INFO ===');
-    console.log('Model ready:', modelReady);
-    console.log('Preproc config:', model?.preprocConfig);
-    console.log('Tree model:', model?.treeModel);
-    console.log('Current form:', form);
   };
 
   return (
@@ -66,7 +67,7 @@ export default function App() {
         <div className="flex items-center space-x-2">
           <button className="p-2 rounded-full hover:bg-yellow-200">☰</button>
           <h1 className="text-2xl font-bold text-sky-900">
-            ENDO<span className="text-yellow-600">METRIOSIS</span> CLASSIFIER
+            THYROID<span className="text-yellow-600">CANCER</span> RECCURANCE PROBABILITY
           </h1>
           <p className="text-sm text-gray-700 ml-3">web name needs work</p>
         </div>
@@ -80,77 +81,281 @@ export default function App() {
         <div className="flex flex-col md:flex-row justify-between gap-6">
           <div className="bg-gradient-to-b from-blue-100 to-white p-6 rounded-lg shadow-md border border-blue-200 flex-1">
             <h2 className="text-2xl font-semibold mb-2">
-              What is endometriosis?
+              Why can thyroid cancer reccur?
             </h2>
             <p className="text-sm leading-relaxed">
-              Endometriosis is a painful condition in which uterine lining tissue
-              grows outside of the uterus. It thickens, breaks down, and bleeds
-              with each cycle, but these materials cannot exit the body as they
-              are stuck in the pelvic area. The scar tissue formed from this causes
-              internal irritation and may cause pelvic organs to stick together,
-              leading to fertility issues.
+              The timing of thyroid cancer recurrence varies widely from person to person. 
+              Some may experience a recurrence only 6 monthsTrusted Source after entering remission, 
+              while others may not experience a recurrence for years or even decades. 
+            </p>
+            <p className="text-sm leading-relaxed">
+              Thyroid cancer recurs because a small number of cancer cells survive initial treatments, 
+              leading to persistent disease that can grow and become detectable later. Tumors may reaccur because of
+              incomplete original removal, dormant cancer cells remaining after treatment, or aggressive forms of
+              thyroid cancer being resistant to certain treatment options
             </p>
           </div>
 
           <div className="bg-gradient-to-b from-yellow-100 to-white p-6 rounded-lg shadow-md border border-blue-200 flex-1">
             <h2 className="text-2xl font-semibold mb-2 text-sky-900">
-              Common Symptoms:
+              Common Symptoms of Reccurance:
             </h2>
             <ul className="list-disc list-inside text-sm leading-relaxed">
-              <li>Painful Periods</li>
-              <li>Pain with Sex</li>
-              <li>Pain with Bowel Movements or Urination</li>
-              <li>Excessive Bleeding</li>
-              <li>Infertility</li>
-              <li>Fatigue</li>
-              <li>Bloating</li>
-              <li>Nausea</li>
+              <li>swollen or enlarged lymph nodes</li>
+              <li>lumps or swelling in the throat</li>
+              <li>a lingering cough or sore throat</li>
+              <li>difficulties with breathing or swallowing</li>
             </ul>
           </div>
         </div>
-
-        <p className="mt-6 text-blue-600 text-sm">
-          Endometriosis affects roughly 10% (190 million) of reproductive-age
-          women and girls globally. It can take from 4 to 11 years on average to
-          receive a diagnosis. This site will guide you through questions to see
-          if you may present with conditions related to the disease.
-        </p>
       </section>
 
-      {/* Input Fields (integrated form) */}
-      <section className="w-10/12 mt-10 bg-gradient-to-b from-yellow-50 to-white p-6 rounded-xl shadow-md">
-        <h2 className="text-xl font-semibold mb-4 text-sky-800">Screening Form</h2>
+    {/* Input Fields (integrated form) */}
+<section className="w-10/12 mt-10 bg-gradient-to-b from-yellow-50 to-white p-6 rounded-xl shadow-md">
+  <h2 className="text-xl font-semibold mb-4 text-sky-800">Thyroid Cancer Screening Form</h2>
+  
+  <form onSubmit={handleSubmit} className="bg-white shadow p-6 rounded-2xl w-full max-w-2xl mx-auto">
+    {/* Numeric Inputs */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div>
+        <label className="block font-medium mb-1">Age</label>
+        <input
+          type="number"
+          name="Age"
+          value={form.Age}
+          onChange={handleChange}
+          min="0"
+          max="120"
+          className="border border-gray-300 rounded-md w-full p-2"
+          placeholder="e.g., 45"
+          required
+        />
+      </div>
 
-        <form onSubmit={handleSubmit} className="bg-white shadow p-6 rounded-2xl w-full max-w-md mx-auto">
-          {[
-            { name: "Age", label: "Age", type: "number" },
-            { name: "Chronic_Pain_Level", label: "Chronic Pain Level (1-10)", type: "number" },
-            { name: "BMI", label: "BMI", type: "number" },
-            { name: "Menstrual_Irregularity", label: "Menstrual Irregularity (0/1)", type: "number" },
-            { name: "Hormone_Level_Abnormality", label: "Hormone Abnormality (0/1)", type: "number" },
-            { name: "Infertility", label: "Infertility (0/1)", type: "number" },
-          ].map((f) => (
-            <div key={f.name} className="mb-4">
-              <label className="block font-medium mb-1">{f.label}</label>
-              <input
-                type={f.type}
-                name={f.name}
-                value={form[f.name]}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-md w-full p-2"
-                required
-              />
-            </div>
-          ))}
+      <div>
+        <label className="block font-medium mb-1">TSH Level (mIU/L)</label>
+        <input
+          type="number"
+          name="TSH_Level"
+          value={form.TSH_Level}
+          onChange={handleChange}
+          min="0"
+          max="20"
+          step="0.1"
+          className="border border-gray-300 rounded-md w-full p-2"
+          placeholder="e.g., 2.5"
+          required
+        />
+      </div>
 
-          <button 
-            type="submit"
-            disabled={loading || !modelReady}
-            className="bg-yellow-400 text-white px-4 py-2 rounded-md hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed w-full"
-          >
-            {loading ? "Analyzing..." : "Predict"}
-          </button>
-        </form>
+      <div>
+        <label className="block font-medium mb-1">T3 Level (ng/dL)</label>
+        <input
+          type="number"
+          name="T3_Level"
+          value={form.T3_Level}
+          onChange={handleChange}
+          min="0"
+          max="5"
+          step="0.1"
+          className="border border-gray-300 rounded-md w-full p-2"
+          placeholder="e.g., 1.2"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">T4 Level (μg/dL)</label>
+        <input
+          type="number"
+          name="T4_Level"
+          value={form.T4_Level}
+          onChange={handleChange}
+          min="0"
+          max="20"
+          step="0.1"
+          className="border border-gray-300 rounded-md w-full p-2"
+          placeholder="e.g., 8.5"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Nodule Size (cm)</label>
+        <input
+          type="number"
+          name="Nodule_Size"
+          value={form.Nodule_Size}
+          onChange={handleChange}
+          min="0"
+          max="10"
+          step="0.1"
+          className="border border-gray-300 rounded-md w-full p-2"
+          placeholder="e.g., 2.5"
+          required
+        />
+      </div>
+    </div>
+
+    {/* Dropdown Inputs */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label className="block font-medium mb-1">Gender</label>
+        <select
+          name="Gender"
+          value={form.Gender}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Country</label>
+        <select
+          name="Country"
+          value={form.Country}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="Brazil">Brazil</option>
+          <option value="China">China</option>
+          <option value="Germany">Germany</option>
+          <option value="India">India</option>
+          <option value="Japan">Japan</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Russia">Russia</option>
+          <option value="South Korea">South Korea</option>
+          <option value="UK">UK</option>
+          <option value="USA">USA</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Ethnicity</label>
+        <select
+          name="Ethnicity"
+          value={form.Ethnicity}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="African">African</option>
+          <option value="Asian">Asian</option>
+          <option value="Caucasian">Caucasian</option>
+          <option value="Hispanic">Hispanic</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Family History</label>
+        <select
+          name="Family_History"
+          value={form.Family_History}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Radiation Exposure</label>
+        <select
+          name="Radiation_Exposure"
+          value={form.Radiation_Exposure}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Iodine Deficiency</label>
+        <select
+          name="Iodine_Deficiency"
+          value={form.Iodine_Deficiency}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Smoking</label>
+        <select
+          name="Smoking"
+          value={form.Smoking}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Obesity</label>
+        <select
+          name="Obesity"
+          value={form.Obesity}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-medium mb-1">Diabetes</label>
+        <select
+          name="Diabetes"
+          value={form.Diabetes}
+          onChange={handleChange}
+          className="border border-gray-300 rounded-md w-full p-2"
+          required
+        >
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+    </div>
+    
+
+    <button
+      type="submit"
+      disabled={loading || !modelReady}
+      className="bg-yellow-400 text-white px-4 py-2 rounded-md hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed w-full mt-6"
+    >
+      {loading ? "Analyzing..." : "Predict"}
+    </button>
+  </form>
+
 
         {result && (
           <div className="mt-8 bg-white p-6 rounded-2xl shadow-lg max-w-lg text-center mx-auto">
@@ -161,6 +366,7 @@ export default function App() {
               ⚠️ This is for educational purposes only. Consult a healthcare provider for diagnosis.
             </p>
           </div>
+          
         )}
       </section>
 
