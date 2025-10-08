@@ -1,0 +1,147 @@
+{
+  "dataset_name": "Thyroid Cancer Risk Data",
+  "total_records": 212691,
+  "total_columns": 17,
+  "memory_usage_mb": 127.83,
+  "columns": [
+    {
+      "name": "Patient_ID",
+      "dtype": "int64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 212691,
+      "min": 1.0,
+      "max": 212691.0,
+      "mean": 106346.0
+    },
+    {
+      "name": "Age",
+      "dtype": "int64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 75,
+      "min": 15.0,
+      "max": 89.0,
+      "mean": 51.918496786417855
+    },
+    {
+      "name": "Gender",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Country",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 10
+    },
+    {
+      "name": "Ethnicity",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 5
+    },
+    {
+      "name": "Family_History",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Radiation_Exposure",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Iodine_Deficiency",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Smoking",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Obesity",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "Diabetes",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    },
+    {
+      "name": "TSH_Level",
+      "dtype": "float64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 991,
+      "min": 0.1,
+      "max": 10.0,
+      "mean": 5.045102002435458
+    },
+    {
+      "name": "T3_Level",
+      "dtype": "float64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 301,
+      "min": 0.5,
+      "max": 3.5,
+      "mean": 2.0017266362939665
+    },
+    {
+      "name": "T4_Level",
+      "dtype": "float64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 751,
+      "min": 4.5,
+      "max": 12.0,
+      "mean": 8.246203976660977
+    },
+    {
+      "name": "Nodule_Size",
+      "dtype": "float64",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 501,
+      "min": 0.0,
+      "max": 5.0,
+      "mean": 2.503403246963906
+    },
+    {
+      "name": "Thyroid_Cancer_Risk",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 3
+    },
+    {
+      "name": "Diagnosis",
+      "dtype": "object",
+      "non_null_count": 212691,
+      "null_count": 0,
+      "unique_values": 2
+    }
+  ],
+  "info_output": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 212691 entries, 0 to 212690\nData columns (total 17 columns):\n #   Column               Non-Null Count   Dtype  \n---  ------               --------------   -----  \n 0   Patient_ID           212691 non-null  int64  \n 1   Age                  212691 non-null  int64  \n 2   Gender               212691 non-null  object \n 3   Country              212691 non-null  object \n 4   Ethnicity            212691 non-null  object \n 5   Family_History       212691 non-null  object \n 6   Radiation_Exposure   212691 non-null  object \n 7   Iodine_Deficiency    212691 non-null  object \n 8   Smoking              212691 non-null  object \n 9   Obesity              212691 non-null  object \n 10  Diabetes             212691 non-null  object \n 11  TSH_Level            212691 non-null  float64\n 12  T3_Level             212691 non-null  float64\n 13  T4_Level             212691 non-null  float64\n 14  Nodule_Size          212691 non-null  float64\n 15  Thyroid_Cancer_Risk  212691 non-null  object \n 16  Diagnosis            212691 non-null  object \ndtypes: float64(4), int64(2), object(11)\nmemory usage: 27.6+ MB\n",
+  "generated_at": "2025-10-08T18:42:16.815581"
+}
