@@ -1,0 +1,222 @@
+[
+  {
+    "input": {
+      "Patient_ID": 65843,
+      "Age": 57,
+      "Gender": "Male",
+      "Country": "India",
+      "Ethnicity": "Hispanic",
+      "Family_History": "Yes",
+      "Radiation_Exposure": "Yes",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "No",
+      "Diabetes": "Yes",
+      "TSH_Level": 3.49,
+      "T3_Level": 1.32,
+      "T4_Level": 6.21,
+      "Nodule_Size": 4.23
+    },
+    "pred_proba_malignant": 0.5839467652512204,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Patient_ID": 186477,
+      "Age": 31,
+      "Gender": "Female",
+      "Country": "Nigeria",
+      "Ethnicity": "Hispanic",
+      "Family_History": "No",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "Yes",
+      "Diabetes": "No",
+      "TSH_Level": 0.49,
+      "T3_Level": 2.81,
+      "T4_Level": 8.81,
+      "Nodule_Size": 1.47
+    },
+    "pred_proba_malignant": 0.3719091634028395,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Patient_ID": 130820,
+      "Age": 50,
+      "Gender": "Male",
+      "Country": "Japan",
+      "Ethnicity": "Asian",
+      "Family_History": "Yes",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "Yes",
+      "Smoking": "No",
+      "Obesity": "Yes",
+      "Diabetes": "No",
+      "TSH_Level": 8.74,
+      "T3_Level": 2.79,
+      "T4_Level": 11.35,
+      "Nodule_Size": 1.96
+    },
+    "pred_proba_malignant": 0.8864983792181934,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Patient_ID": 129673,
+      "Age": 34,
+      "Gender": "Male",
+      "Country": "Germany",
+      "Ethnicity": "Caucasian",
+      "Family_History": "No",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "Yes",
+      "Diabetes": "No",
+      "TSH_Level": 1.5,
+      "T3_Level": 2.09,
+      "T4_Level": 8.41,
+      "Nodule_Size": 4.56
+    },
+    "pred_proba_malignant": 0.3719091634028395,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Patient_ID": 54466,
+      "Age": 66,
+      "Gender": "Female",
+      "Country": "Japan",
+      "Ethnicity": "Caucasian",
+      "Family_History": "Yes",
+      "Radiation_Exposure": "Yes",
+      "Iodine_Deficiency": "No",
+      "Smoking": "Yes",
+      "Obesity": "No",
+      "Diabetes": "Yes",
+      "TSH_Level": 5.46,
+      "T3_Level": 2.96,
+      "T4_Level": 11.81,
+      "Nodule_Size": 1.0
+    },
+    "pred_proba_malignant": 0.38286058990960026,
+    "label": 1,
+    "true": 1
+  },
+  {
+    "input": {
+      "Patient_ID": 90754,
+      "Age": 72,
+      "Gender": "Male",
+      "Country": "South Korea",
+      "Ethnicity": "African",
+      "Family_History": "No",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "No",
+      "Diabetes": "Yes",
+      "TSH_Level": 3.75,
+      "T3_Level": 2.37,
+      "T4_Level": 10.67,
+      "Nodule_Size": 4.99
+    },
+    "pred_proba_malignant": 0.3719091634028395,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Patient_ID": 20474,
+      "Age": 76,
+      "Gender": "Female",
+      "Country": "Nigeria",
+      "Ethnicity": "Middle Eastern",
+      "Family_History": "Yes",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "No",
+      "Diabetes": "No",
+      "TSH_Level": 0.84,
+      "T3_Level": 2.04,
+      "T4_Level": 5.1,
+      "Nodule_Size": 4.33
+    },
+    "pred_proba_malignant": 0.35458585431512546,
+    "label": 0,
+    "true": 1
+  },
+  {
+    "input": {
+      "Patient_ID": 124434,
+      "Age": 17,
+      "Gender": "Female",
+      "Country": "India",
+      "Ethnicity": "African",
+      "Family_History": "No",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "Yes",
+      "Diabetes": "No",
+      "TSH_Level": 5.48,
+      "T3_Level": 3.0,
+      "T4_Level": 6.56,
+      "Nodule_Size": 3.46
+    },
+    "pred_proba_malignant": 0.3646282334820806,
+    "label": 0,
+    "true": 0
+  },
+  {
+    "input": {
+      "Patient_ID": 96277,
+      "Age": 67,
+      "Gender": "Male",
+      "Country": "Brazil",
+      "Ethnicity": "Hispanic",
+      "Family_History": "No",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "No",
+      "Smoking": "No",
+      "Obesity": "No",
+      "Diabetes": "Yes",
+      "TSH_Level": 1.85,
+      "T3_Level": 3.08,
+      "T4_Level": 6.46,
+      "Nodule_Size": 2.11
+    },
+    "pred_proba_malignant": 0.3719091634028395,
+    "label": 1,
+    "true": 0
+  },
+  {
+    "input": {
+      "Patient_ID": 85988,
+      "Age": 18,
+      "Gender": "Female",
+      "Country": "Brazil",
+      "Ethnicity": "Asian",
+      "Family_History": "Yes",
+      "Radiation_Exposure": "No",
+      "Iodine_Deficiency": "Yes",
+      "Smoking": "No",
+      "Obesity": "No",
+      "Diabetes": "No",
+      "TSH_Level": 7.54,
+      "T3_Level": 0.95,
+      "T4_Level": 9.44,
+      "Nodule_Size": 1.2
+    },
+    "pred_proba_malignant": 0.9077995801733809,
+    "label": 1,
+    "true": 1
+  }
+]
