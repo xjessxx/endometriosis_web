@@ -1,0 +1,189 @@
+{
+  "summary": {
+    "Total_Patients": 212691,
+    "Malignant_Count": 49495,
+    "Benign_Count": 163196,
+    "Malignancy_Rate": 23.27,
+    "Avg_Age": 51.9,
+    "Min_Age": 15,
+    "Max_Age": 89,
+    "Avg_TSH": 5.05,
+    "Avg_T3": 2.0,
+    "Avg_T4": 8.25,
+    "Avg_Nodule_Size": 2.5,
+    "Pct_Family_History": 30.0,
+    "Pct_Radiation": 15.0,
+    "Pct_Smoking": 19.9,
+    "Pct_Obesity": 30.0,
+    "Pct_Diabetes": 20.0
+  },
+  "geo_analysis": [
+    {
+      "Country": "India",
+      "Total_Patients": 42496,
+      "Pct_of_Total": 20.0,
+      "Malignant_Cases": 13976,
+      "Malignancy_Rate": 32.9
+    },
+    {
+      "Country": "China",
+      "Total_Patients": 31978,
+      "Pct_of_Total": 15.0,
+      "Malignant_Cases": 6698,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "Nigeria",
+      "Total_Patients": 31918,
+      "Pct_of_Total": 15.0,
+      "Malignant_Cases": 6712,
+      "Malignancy_Rate": 21.0
+    },
+    {
+      "Country": "Brazil",
+      "Total_Patients": 21413,
+      "Pct_of_Total": 10.1,
+      "Malignant_Cases": 4479,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "Russia",
+      "Total_Patients": 21297,
+      "Pct_of_Total": 10.0,
+      "Malignant_Cases": 4507,
+      "Malignancy_Rate": 21.2
+    },
+    {
+      "Country": "Japan",
+      "Total_Patients": 16867,
+      "Pct_of_Total": 7.9,
+      "Malignant_Cases": 3479,
+      "Malignancy_Rate": 20.6
+    },
+    {
+      "Country": "South Korea",
+      "Total_Patients": 14965,
+      "Pct_of_Total": 7.0,
+      "Malignant_Cases": 3083,
+      "Malignancy_Rate": 20.6
+    },
+    {
+      "Country": "UK",
+      "Total_Patients": 10642,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2225,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "USA",
+      "Total_Patients": 10558,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2119,
+      "Malignancy_Rate": 20.1
+    },
+    {
+      "Country": "Germany",
+      "Total_Patients": 10557,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2217,
+      "Malignancy_Rate": 21.0
+    }
+  ],
+  "gender_distribution": [
+    {
+      "Gender": "Female",
+      "Patient_Count": 127527,
+      "Percentage": 59.96
+    },
+    {
+      "Gender": "Male",
+      "Patient_Count": 85164,
+      "Percentage": 40.04
+    }
+  ],
+  "country_analysis": [
+    {
+      "Country": "India",
+      "Total_Patients": 42496,
+      "Pct_of_Total": 20.0,
+      "Malignant_Cases": 13976,
+      "Malignancy_Rate": 32.9
+    },
+    {
+      "Country": "China",
+      "Total_Patients": 31978,
+      "Pct_of_Total": 15.0,
+      "Malignant_Cases": 6698,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "Nigeria",
+      "Total_Patients": 31918,
+      "Pct_of_Total": 15.0,
+      "Malignant_Cases": 6712,
+      "Malignancy_Rate": 21.0
+    },
+    {
+      "Country": "Brazil",
+      "Total_Patients": 21413,
+      "Pct_of_Total": 10.1,
+      "Malignant_Cases": 4479,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "Russia",
+      "Total_Patients": 21297,
+      "Pct_of_Total": 10.0,
+      "Malignant_Cases": 4507,
+      "Malignancy_Rate": 21.2
+    },
+    {
+      "Country": "Japan",
+      "Total_Patients": 16867,
+      "Pct_of_Total": 7.9,
+      "Malignant_Cases": 3479,
+      "Malignancy_Rate": 20.6
+    },
+    {
+      "Country": "South Korea",
+      "Total_Patients": 14965,
+      "Pct_of_Total": 7.0,
+      "Malignant_Cases": 3083,
+      "Malignancy_Rate": 20.6
+    },
+    {
+      "Country": "UK",
+      "Total_Patients": 10642,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2225,
+      "Malignancy_Rate": 20.9
+    },
+    {
+      "Country": "USA",
+      "Total_Patients": 10558,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2119,
+      "Malignancy_Rate": 20.1
+    },
+    {
+      "Country": "Germany",
+      "Total_Patients": 10557,
+      "Pct_of_Total": 5.0,
+      "Malignant_Cases": 2217,
+      "Malignancy_Rate": 21.0
+    }
+  ],
+  "diagnosis_analytics": [
+    {
+      "Diagnosis": "Benign",
+      "Count": 163196,
+      "Percentage": 76.7
+    },
+    {
+      "Diagnosis": "Malignant",
+      "Count": 49495,
+      "Percentage": 23.3
+    }
+  ],
+  "generated_at": "2025-10-08T18:39:34.290883"
+}
