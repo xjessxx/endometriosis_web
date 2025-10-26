@@ -106,7 +106,7 @@ export default function Prediction() {
 
   return (
     <div className="min-h-screen w-full">
-      <div className="w-full px-4 sm:px-8 md:px-16 lg:px-32 py-10 bg-gradient-to-b from-purple-50 via-pink-50 to-teal-50 min-h-screen">
+      <div className="w-screen px-4 py-10 bg-gradient-to-b from-purple-50 via-pink-50 to-teal-50 min-h-screen">
         <section className="max-w-4xl mx-auto mt-10 bg-white/80 backdrop-blur-md border border-pink-200 p-8 rounded-2xl shadow-xl">
           <h2 className="text-3xl font-semibold text-center text-purple-800 mb-8">
             Thyroid Cancer Screening Form

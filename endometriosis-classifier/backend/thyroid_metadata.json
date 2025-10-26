@@ -125,7 +125,7 @@
       "unique_values": 502,
       "min": 0.0,
       "max": 10.0,
-      "mean": 2.5035793571317755
+      "mean": 2.503579357131775
     },
     {
       "name": "Thyroid_Cancer_Risk",
@@ -143,5 +143,5 @@
     }
   ],
   "info_output": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 212703 entries, 0 to 212702\nData columns (total 17 columns):\n #   Column               Non-Null Count   Dtype  \n---  ------               --------------   -----  \n 0   Patient_ID           212703 non-null  int64  \n 1   Age                  212703 non-null  int64  \n 2   Gender               212703 non-null  object \n 3   Country              212703 non-null  object \n 4   Ethnicity            212703 non-null  object \n 5   Family_History       212703 non-null  object \n 6   Radiation_Exposure   212703 non-null  object \n 7   Iodine_Deficiency    212703 non-null  object \n 8   Smoking              212703 non-null  object \n 9   Obesity              212703 non-null  object \n 10  Diabetes             212703 non-null  object \n 11  TSH_Level            212703 non-null  float64\n 12  T3_Level             212703 non-null  float64\n 13  T4_Level             212703 non-null  float64\n 14  Nodule_Size          212703 non-null  float64\n 15  Thyroid_Cancer_Risk  212703 non-null  object \n 16  Diagnosis            212703 non-null  object \ndtypes: float64(4), int64(2), object(11)\nmemory usage: 27.6+ MB\n",
-  "generated_at": "2025-10-22T12:41:57.689027"
+  "generated_at": "2025-10-26T12:33:41.813102"
 }

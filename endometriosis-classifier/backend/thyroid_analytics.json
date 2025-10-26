@@ -205,5 +205,69 @@
       "Percentage": 0.0
     }
   ],
-  "generated_at": "2025-10-22T12:41:57.704055"
+  "nodule_size_distribution": [
+    {
+      "size": "0-1 cm",
+      "count": 42615
+    },
+    {
+      "size": "1-2 cm",
+      "count": 42200
+    },
+    {
+      "size": "2-3 cm",
+      "count": 42619
+    },
+    {
+      "size": "3-4 cm",
+      "count": 42618
+    },
+    {
+      "size": "4-5 cm",
+      "count": 42450
+    },
+    {
+      "size": "5+ cm",
+      "count": 5
+    }
+  ],
+  "tsh_by_gender_diagnosis": [
+    {
+      "gender": "Male",
+      "benign": 5.044623675640967,
+      "malignant": 5.045154138192863
+    },
+    {
+      "gender": "Female",
+      "benign": 5.052440406188961,
+      "malignant": 5.021990248823133
+    }
+  ],
+  "age_malignancy_rate": [
+    {
+      "age_group": "<30",
+      "malignancy_rate": 23.259490196939424
+    },
+    {
+      "age_group": "30-39",
+      "malignancy_rate": 23.21359733660417
+    },
+    {
+      "age_group": "40-49",
+      "malignancy_rate": 23.32957030974388
+    },
+    {
+      "age_group": "50-59",
+      "malignancy_rate": 23.165751302633435
+    },
+    {
+      "age_group": "60-69",
+      "malignancy_rate": 23.40811320083905
+    },
+    {
+      "age_group": "70+",
+      "malignancy_rate": 23.2584102411432
+    }
+  ],
+  "generated_at": "2025-10-26T12:33:41.994158"
 }

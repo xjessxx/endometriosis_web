@@ -170,6 +170,40 @@ nodule_size_dict = [
     for label in labels
 ]
 
+# 7. TSH Levels by Gender and Diagnosis
+tsh_by_gender_diagnosis = meta.groupby(['Gender', 'Diagnosis'])['TSH_Level'].mean().reset_index()
+tsh_by_gender_diagnosis.columns = ['Gender', 'Diagnosis', 'Avg_TSH']
+
+# Reshape for frontend
+tsh_chart_data = []
+for gender in ['Male', 'Female']:
+    gender_data = tsh_by_gender_diagnosis[tsh_by_gender_diagnosis['Gender'] == gender]
+    
+    benign_tsh = gender_data[gender_data['Diagnosis'] == 'Benign']['Avg_TSH'].values
+    malignant_tsh = gender_data[gender_data['Diagnosis'] == 'Malignant']['Avg_TSH'].values
+    
+    tsh_chart_data.append({
+        "gender": gender,
+        "benign": float(benign_tsh[0]) if len(benign_tsh) > 0 else 0,
+        "malignant": float(malignant_tsh[0]) if len(malignant_tsh) > 0 else 0
+    })
+
+# 8. Malignancy Rate by Age Group
+age_bins = [0, 30, 40, 50, 60, 70, 100]
+age_labels = ['<30', '30-39', '40-49', '50-59', '60-69', '70+']
+
+meta['Age_Group'] = pd.cut(meta['Age'], bins=age_bins, labels=age_labels)
+age_group_analysis = meta.groupby('Age_Group')['Diagnosis'].apply(
+    lambda x: (x == 'Malignant').sum() / len(x) * 100
+).reset_index()
+age_group_analysis.columns = ['age_group', 'malignancy_rate']
+
+# Convert to list of dicts for frontend
+age_malignancy_data = [
+    {"age_group": row['age_group'], "malignancy_rate": float(row['malignancy_rate'])}
+    for _, row in age_group_analysis.iterrows()
+]
+
 # Create master analytics object
 dashboard_analytics = {
     "summary": summary_dict,
@@ -178,6 +212,8 @@ dashboard_analytics = {
     "country_analysis": country_dict,
     "diagnosis_analytics": diagnosis_dict,
     "nodule_size_distribution": nodule_size_dict,
+    "tsh_by_gender_diagnosis": tsh_chart_data,
+    "age_malignancy_rate": age_malignancy_data,
     "generated_at": pd.Timestamp.now().isoformat()
 }
 
