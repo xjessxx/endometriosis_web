@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, LineChart, Line, BarChart, Bar,  XAxis,  YAxis,  CartesianGrid, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { ComposedChart, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, LineChart, Line, BarChart, Bar,  XAxis,  YAxis,  CartesianGrid, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+
 
 
 // API Configuration
@@ -31,7 +32,7 @@ export default function Dashboard() {
       }
       
     } catch (error) {
-      console.error('❌ Error loading analytics:', error);
+      console.error(' Error loading analytics:', error);
       alert('Could not load analytics from API. Make sure the backend is running on port 5000.');
     } finally {
       setIsRefreshing(false);
@@ -265,48 +266,48 @@ export default function Dashboard() {
             </p>
           </div>
 
-                {/* Malignancy Rate by Age Group - Line Chart */}
-      <div className="bg-white/90 border border-pink-200 rounded-2xl p-6 shadow-md">
-        <h3 className="text-xl font-semibold text-pink-700 mb-4">
-          Malignancy Rate by Age Group
-        </h3>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={analytics.age_malignancy_rate || []}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis 
-              dataKey="age_group" 
-              tick={{ fill: '#475569', fontSize: 12 }}
-              label={{ value: 'Age Group', position: 'insideBottom', offset: -5 }}
-            />
-            <YAxis 
-              label={{ value: 'Malignancy Rate (%)', angle: -90, position: 'insideLeft' }}
-              tick={{ fill: '#64748b', fontSize: 10 }}
-              domain={[0, 100]}
-            />
-            <Tooltip 
-              contentStyle={{ 
-                backgroundColor: 'white', 
-                border: '1px solid #ec4899',
-                borderRadius: '8px'
-              }}
-              formatter={(value) => `${value.toFixed(1)}%`}
-            />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="malignancy_rate"
-              stroke="#ec4899"
-              strokeWidth={3}
-              dot={{ fill: '#ec4899', r: 6 }}
-              activeDot={{ r: 8 }}
-              name="Malignancy Rate"
-            />
-          </LineChart>
-        </ResponsiveContainer>
-        <p className="text-sm text-gray-600 text-center mt-2">
-          How cancer risk changes across different age groups
-        </p>
-      </div>
+          {/* Malignancy Rate by Age Group - Line Chart */}
+          <div className="bg-white/90 border border-pink-200 rounded-2xl p-6 shadow-md">
+            <h3 className="text-xl font-semibold text-pink-700 mb-4">
+              Malignancy Rate by Age Group
+            </h3>
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={analytics.age_malignancy_rate || []}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis 
+                  dataKey="age_group" 
+                  tick={{ fill: '#475569', fontSize: 12 }}
+                  label={{ value: 'Age Group', position: 'insideBottom', offset: -5 }}
+                />
+                <YAxis 
+                  label={{ value: 'Malignancy Rate (%)', angle: -90, position: 'insideLeft' }}
+                  tick={{ fill: '#64748b', fontSize: 10 }}
+                  domain={[0, 100]}
+                />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: 'white', 
+                    border: '1px solid #ec4899',
+                    borderRadius: '8px'
+                  }}
+                  formatter={(value) => `${value.toFixed(1)}%`}
+                />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="malignancy_rate"
+                  stroke="#ec4899"
+                  strokeWidth={3}
+                  dot={{ fill: '#ec4899', r: 6 }}
+                  activeDot={{ r: 8 }}
+                  name="Malignancy Rate"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="text-sm text-gray-600 text-center mt-2">
+              How cancer risk changes across different age groups
+            </p>
+          </div>
 
           {/* TSH Levels by Gender and Diagnosis */}
           <div className="bg-white/90 border border-purple-200 rounded-2xl p-6 shadow-md">
@@ -352,10 +353,68 @@ export default function Dashboard() {
             </p>
           </div>
 
+          {/* Diagnosis by Age, Obesity, and Diabetes Rate */}
+          <div className="bg-white/90 border border-purple-200 rounded-2xl p-6 shadow-md">
+            <h3 className="text-xl font-semibold text-purple-700 mb-4">
+              Diagnosis by Age Group, Obesity & Diabetes Rate
+            </h3>
+            <ResponsiveContainer width="100%" height={400}>
+              <ComposedChart data={analytics.diagnosis_age_obesity_diabetes || []}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="age_group" tick={{ fill: '#475569', fontSize: 12 }} />
+                <YAxis 
+                  yAxisId="left"
+                  label={{ value: 'Diagnosis Rate (%)', angle: -90, position: 'insideLeft' }}
+                  tick={{ fill: '#64748b', fontSize: 10 }}
+                  domain={[0, 100]}
+                />
+                <YAxis 
+                  yAxisId="right"
+                  orientation="right"
+                  label={{ value: 'Health Condition Rate (%)', angle: 90, position: 'insideRight' }}
+                  tick={{ fill: '#64748b', fontSize: 10 }}
+                  domain={[0, 100]}
+                />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: 'white', border: '1px solid #a855f7', borderRadius: '8px' }}
+                  formatter={(value, name) => {
+                    if (name === 'obesity_rate') return [`${value.toFixed(1)}%`, 'Obesity Rate'];
+                    if (name === 'diabetes_rate') return [`${value.toFixed(1)}%`, 'Diabetes Rate'];
+                    return [`${value.toFixed(1)}%`, name.charAt(0).toUpperCase() + name.slice(1)];
+                  }}
+                />
+                <Legend />
+                <Bar yAxisId="left" dataKey="benign" stackId="a" fill="#14b8a6" name="Benign" radius={[8, 8, 0, 0]} />
+                <Bar yAxisId="left" dataKey="malignant" stackId="a" fill="#ec4899" name="Malignant" radius={[8, 8, 0, 0]} />
+                <Line 
+                  yAxisId="right" 
+                  type="monotone" 
+                  dataKey="obesity_rate" 
+                  stroke="#a855f7" 
+                  strokeWidth={3} 
+                  dot={{ fill: '#a855f7', r: 6 }}
+                  name="Obesity Rate"
+                />
+                <Line 
+                  yAxisId="right" 
+                  type="monotone" 
+                  dataKey="diabetes_rate" 
+                  stroke="#f97316" 
+                  strokeWidth={3} 
+                  dot={{ fill: '#f97316', r: 6 }}
+                  name="Diabetes Rate"
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
+            <p className="text-sm text-gray-600 text-center mt-2">
+              Relationship between age, diagnosis type, obesity, and diabetes rates.
+            </p>
+          </div>
+
         </div>
       </section>
 
-      {/* Keep all your other existing sections here */}
+      {/* Keep all other existing sections here */}
       
     </div>
     </div>

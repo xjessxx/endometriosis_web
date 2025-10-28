@@ -204,6 +204,52 @@ age_malignancy_data = [
     for _, row in age_group_analysis.iterrows()
 ]
 
+# 9. Diagnosis by Age Group, Obesity, and Diabetes
+age_bins = [0, 30, 40, 50, 60, 70, 100]
+age_labels = ['<30', '30-39', '40-49', '50-59', '60-69', '70+']
+
+# Normalize column names for consistency
+meta.columns = [c.strip().title() for c in meta.columns]
+
+# Create Age Group bins
+meta['Age_Group'] = pd.cut(meta['Age'], bins=age_bins, labels=age_labels, right=True)
+
+# Ensure Yes/No are handled safely
+meta['Obesity'] = meta['Obesity'].fillna('No').str.strip().str.title()
+meta['Diabetes'] = meta['Diabetes'].fillna('No').str.strip().str.title()
+
+# Convert to binary flags
+meta['Obesity_Flag'] = meta['Obesity'].map({'Yes': 1, 'No': 0}).fillna(0)
+meta['Diabetes_Flag'] = meta['Diabetes'].map({'Yes': 1, 'No': 0}).fillna(0)
+
+# Group and aggregate by Age_Group
+diagnosis_age_obesity_diabetes_df = (
+    meta.groupby('Age_Group')
+    .apply(lambda g: pd.Series({
+        "benign": (g['Diagnosis'] == 'Benign').mean() * 100 if len(g) > 0 else 0,
+        "malignant": (g['Diagnosis'] == 'Malignant').mean() * 100 if len(g) > 0 else 0,
+        "obesity_rate": g['Obesity_Flag'].mean() * 100 if len(g) > 0 else 0,
+        "diabetes_rate": g['Diabetes_Flag'].mean() * 100 if len(g) > 0 else 0
+    }))
+    .reset_index()
+)
+
+# Convert to JSON-ready list of dicts
+diagnosis_age_obesity_diabetes = [
+    {
+        "age_group": str(row['Age_Group']),
+        "benign": round(float(row['benign']), 1),
+        "malignant": round(float(row['malignant']), 1),
+        "obesity_rate": round(float(row['obesity_rate']), 1),
+        "diabetes_rate": round(float(row['diabetes_rate']), 1)
+    }
+    for _, row in diagnosis_age_obesity_diabetes_df.iterrows()
+]
+
+
+
+
+
 # Create master analytics object
 dashboard_analytics = {
     "summary": summary_dict,
@@ -214,6 +260,7 @@ dashboard_analytics = {
     "nodule_size_distribution": nodule_size_dict,
     "tsh_by_gender_diagnosis": tsh_chart_data,
     "age_malignancy_rate": age_malignancy_data,
+    "diagnosis_age_obesity_diabetes": diagnosis_age_obesity_diabetes,  # added 
     "generated_at": pd.Timestamp.now().isoformat()
 }
 
